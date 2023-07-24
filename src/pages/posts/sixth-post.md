@@ -1,148 +1,43 @@
 ---
 layout: '@/templates/BasePost.astro'
-title: Typography example
-description: Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur vero esse non molestias eos excepturi.
+title: Hydroponics A Journey from Lettuce to Marijuana
+description: Discover how we ventured into cultivating marijuana for its medicinal benefits and thriving global market. 
 pubDate: 2020-02-06T00:00:00Z
-imgSrc: '/assets/images/image-post.jpeg'
+imgSrc: '/assets/images/mh.png'
 imgAlt: 'Image post'
 ---
 
-This is a paragraph. Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur vero esse non molestias eos excepturi, inventore atque cupiditate. Sed voluptatem quas omnis culpa, et odit.
+# Home Hydroponics for Edible and Medicinal Plants
 
-Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur vero esse non molestias eos excepturi, inventore atque cupiditate. Sed voluptatem quas omnis culpa, et odit.
+In recent years, my interest in agriculture has grown, leading me to find ways to align my career in mechatronics with this field. I joined the precision agriculture research group at my university and together, we developed an automated device for growing organic crops at home. Our goal was to create a system where edible plants could be cultivated automatically using sensors and actuators.
 
-Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur vero esse non molestias eos excepturi, inventore atque cupiditate. Sed voluptatem quas omnis culpa, et odit.
+After researching different types of cultivation methods, we chose hydroponics due to its water-saving benefits and impressive results. Our system worked flawlessly, and we successfully grew 45 healthy and delicious lettuces.
 
-## Headings
+Encouraged by our initial success, we decided to experiment with other species, and we considered cannabis for the following reasons:
 
-# H1 For example
+1. Cannabis has two main components, and its medicinal properties are beneficial for certain medical conditions such as a, b, and c.
+2. The plants are robust and grow exceptionally well (we will explore this further).
+3. The global market for cannabis is expanding rapidly (insert relevant news link).
+4. We believe Colombia should embrace precision agriculture, and we want to promote it from Boyacá.
 
-Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur vero esse non molestias eos excepturi, inventore atque cupiditate. Sed voluptatem quas omnis culpa, et odit.
+We enthusiastically embarked on this new project, but we encountered our first challenge: cannabis seedlings were not readily available for purchase; only seeds were accessible. Undeterred, we bought 4 feminized seeds (laboratory-engineered to ensure female plants, which produce the desired flowers).
 
-## H2 For example
+Here are the four stages of the cannabis plant:
 
-Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur vero esse non molestias eos excepturi, inventore atque cupiditate. Sed voluptatem quas omnis culpa, et odit.
+1. **Germination**: After acquiring the seeds, we placed them in damp paper towels and kept them in the dark for a week to encourage germination 
+2. **Adaptation**: Once germinated, the seedlings were transferred to small pots with soil, where they were watered in the mornings and received sunlight under a shaded area for 15 days.
+3. **Vegetative Growth**: As the seedlings matured, they were introduced to the hydroponic system, where nutrient levels were maintained between 350 to 400 ppm, and the pH was adjusted to 5.8 to 6.2. Gradually, nutrient levels were increased to maintain them between 600 to 800 ppm. However, we encountered space issues in the tube, limiting root growth and hindering plant development. Additionally, the plants required support to prevent bending due to their size.
+4. **Flowering**: In the flowering stage, nutrient levels were further increased to 1800 ppm, and a pre-harvest pruning was performed.
 
-### H3 For example
+Finally, on the full moon day of August 15, we harvested the plants. We hung them upside down in a box with a small breathing hole and left them for 15 days. Afterward, we transferred them to glass jars for the final curing process.
 
-Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur vero esse non molestias eos excepturi, inventore atque cupiditate. Sed voluptatem quas omnis culpa, et odit.
+**Results and conclusions**:
+1. In total, we obtained a significant yield of cannabis grams.
+2. The total cultivation time from seed to harvest was 5 months.
+4. The space provided was insufficient; we need to enlarge the tube or modify the system.
 
-#### H4 For example
+**Future work**:
+1. We will experiment with a new system, where a tank will house all the plants and have a continuous oxygenating pump for the nutrient solution.
+2. Our goal is to develop this into a controlled environment suitable for urban settings.
 
-Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur vero esse non molestias eos excepturi, inventore atque cupiditate. Sed voluptatem quas omnis culpa, et odit.
-
-##### H5 For example
-
-Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur vero esse non molestias eos excepturi, inventore atque cupiditate. Sed voluptatem quas omnis culpa, et odit.
-
-###### H6 For example
-
-Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur vero esse non molestias eos excepturi, inventore atque cupiditate. Sed voluptatem quas omnis culpa, et odit.
-
-## Emphasis
-
-Emphasis, aka italics, with _asterisks_ or _underscores_.
-
-Strong emphasis, aka bold, with **asterisks** or **underscores**.
-
-Strikethrough uses two tildes. ~~Scratch this.~~
-
-## Blockquotes
-
-> Blockquotes are very handy in email to emulate reply text.
-> This line is part of the same quote.
-
-Quote break.
-
-> This is a very long line that will still be quoted properly when it wraps. Oh boy let's keep writing to make sure this is long enough to actually wrap for everyone. Oh, you can _put_ **Markdown** into a blockquote.
-
-## Horizontal separator
-
-This is a horizontal separator:
-
----
-
-Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur vero esse non molestias eos excepturi, inventore atque cupiditate. Sed voluptatem quas omnis culpa, et odit.
-
----
-
-## List types
-
-### Ordered list
-
-1. List item 1
-2. List item 2
-   1. Nested list item A
-   2. Nested list item B
-3. List item 3
-
-### Unordered list
-
-- List item
-- List item
-  - Nested list item
-  - Nested list item
-    - Double nested list item
-    - Double nested list item
-- List item
-
-### Mixed list
-
-1. First ordered list item
-2. Another item
-   - Unordered sub-list.
-3. Actual numbers don't matter, just that it's a number
-   1. Ordered sub-list
-4. And another item.
-
-## Links
-
-[Inline-style link](https://www.google.com)
-
-[Inline-style link with title](https://www.google.com "Google's Homepage")
-
-[Reference-style link][arbitrary case-insensitive reference text]
-
-[You can use numbers for reference-style link definitions][1]
-
-Or leave it empty and use the [link text itself].
-
-Some text to show that the reference links can follow later.
-
-[arbitrary case-insensitive reference text]: https://www.mozilla.org
-[1]: http://slashdot.org
-[link text itself]: http://www.reddit.com
-
-## Images
-
-Images included in _\_posts_ folder are lazy loaded.
-
-Inline-style:
-![alt text](/src/images/random.jpeg 'Logo Title Text 1')
-
-## Table
-
-| Tables        |      Are      | Cool |
-| ------------- | :-----------: | ---: |
-| col 3 is      | right-aligned | 1600 |
-| col 2 is      |   centered    |   12 |
-| zebra stripes |   are neat    |    1 |
-
-| Markdown | Less      | Pretty     |
-| -------- | --------- | ---------- |
-| _Still_  | `renders` | **nicely** |
-| 1        | 2         | 3          |
-
-## Syntax highlight
-
-```javascript
-var s = 'JavaScript syntax highlighting'; var s = 'JavaScript syntax highlighting';
-alert(s);
-```
-
-Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur vero esse non molestias eos excepturi, inventore atque cupiditate. Sed voluptatem quas omnis culpa, et odit.
-
-```python
-s = "Python syntax highlighting"
-print s
-```
+https://photos.app.goo.gl/iyFL6JPzvpGTZ6Wt8

@@ -10,20 +10,24 @@ const Hero = () => (
     <HeroAvatar
       title={
         <>
-          Hi there, I'm <GradientText>Ixartz</GradientText> 👋
+          Hi there, I'm <GradientText>Alejofig</GradientText> 👋
         </>
       }
       description={
         <>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus{' '}
-          <a className="text-cyan-400 hover:underline" href="/">
-            malesuada
-          </a>{' '}
-          nisi tellus, non imperdiet nisi tempor at. Lorem ipsum dolor sit amet,{' '}
-          <a className="text-cyan-400 hover:underline" href="/">
-            consectetur
-          </a>{' '}
-          adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.
+          <GradientText>My mindset:</GradientText> Help people by solving their
+          problems with tech. I love to tackle any kind of problem with tech. I
+          am a Python developer and a Data Architect/Engineer. I use AWS to
+          develop automation pipelines in the cloud. Additionally, I am{' '}
+          <GradientText>
+            honored to be recognized as an AWS Community Builder in Data.
+          </GradientText>{' '}
+          In my free time, I enjoy mixing music, attending concerts (especially
+          electronic music events), staying active with regular exercise,{' '}
+          <GradientText>indulging in a good read</GradientText>, and{' '}
+          <GradientText>
+            sharing my passion for food through reviews on Google Maps.
+          </GradientText>
         </>
       }
       avatar={
@@ -36,28 +40,19 @@ const Hero = () => (
       }
       socialButtons={
         <>
-          <a href="/">
-            <HeroSocial
-              src="/assets/images/twitter-icon.png"
-              alt="Twitter icon"
-            />
-          </a>
-          <a href="/">
-            <HeroSocial
-              src="/assets/images/facebook-icon.png"
-              alt="Facebook icon"
-            />
-          </a>
-          <a href="/">
+          <a href="https://www.linkedin.com/in/alejofig/">
             <HeroSocial
               src="/assets/images/linkedin-icon.png"
               alt="Linkedin icon"
             />
           </a>
-          <a href="/">
+          <a href="https://medium.com/@1alejofig1">
+            <HeroSocial src="/assets/images/medium.svg" alt="Medium icon" />
+          </a>
+          <a href="https://soundcloud.com/alejandro-figueroa-74">
             <HeroSocial
-              src="/assets/images/youtube-icon.png"
-              alt="Youtube icon"
+              src="/assets/images/soundcloud.svg"
+              alt="soundcloud icon"
             />
           </a>
         </>
