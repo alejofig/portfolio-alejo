@@ -17,8 +17,8 @@ const Hero = () => (
         <>
           <GradientText>My mindset:</GradientText> Help people by solving their
           problems with tech. I love to tackle any kind of problem with tech. I
-          am a Python developer and a Data Architect/Engineer. I use AWS to
-          develop automation pipelines in the cloud. Additionally, I am{' '}
+          am a Python developer and a Integrations Engineer Manager. I use AWS
+          to develop automation pipelines in the cloud. Additionally, I am{' '}
           <GradientText>
             honored to be recognized as an AWS Community Builder in Data.
           </GradientText>{' '}
@@ -33,7 +33,7 @@ const Hero = () => (
       avatar={
         <img
           className="h-80 w-64"
-          src="/assets/images/avatar.svg"
+          src="/assets/images/berlin.png"
           alt="Avatar image"
           loading="lazy"
         />
