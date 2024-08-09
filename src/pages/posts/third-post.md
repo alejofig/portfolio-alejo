@@ -2,7 +2,7 @@
 layout: '@/templates/BasePost.astro'
 title: My frist triathlon (life experience)
 description: Had the opportiny to race a triathlon in San Andres island.
-pubDate: 2024-07-31T00:00:00Z
+pubDate: 2024-03-17T00:00:00Z
 imgSrc: '/assets/images/tri.jpeg'
 imgAlt: 'Image post'
 ---
