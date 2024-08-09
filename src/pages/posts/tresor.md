@@ -81,4 +81,22 @@ My back, legs, and neck hurt. I’m not sure if it was from the tension, all the
 
 Smoke, lights, sweat, dancing, lots of dancing, and lots of music. Watching Mono climb the mountain too was very special. Once again, music is the universal language.
 
-At 4 AM, after dancing for 2.5 hours, we headed home. Exhausted. Physically drained but spiritually fulfilled. And me, once again, grateful for everything I’ve experienced. Without a doubt, experiences far outweigh
+At 4 AM, after dancing for 2.5 hours, we headed home. Exhausted. Physically drained but spiritually fulfilled. And me, once again, grateful for everything I’ve experienced. Without a doubt, experiences far outweigh material things a hundredfold (at least for me). We headed back home, rested for an hour, and caught the train that would take us to the next city: Prague.
+
+Notes:
+
+I'm writing this review while traveling to Prague with my feet, back, and neck completely destroyed. I only slept for an hour, but I needed to process and filter my emotions.
+
+This was the DJ who took us on his musical journey:
+
+Listen to MIX: Fast Techno #1 2022 by Schacke on SoundCloud.
+
+Although Berlin may not immediately strike you with its beauty, it does with its culture and devotion to music. It’s curious because every day we were there, there was music.
+
+Berlin is a wild musical jungle. Freedom for all.
+
+
+
+
+
+
