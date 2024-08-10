@@ -17,8 +17,8 @@ const Hero = () => (
         <>
           <GradientText>My mindset:</GradientText> Help people by solving their
           problems with tech. I love to tackle any kind of problem with tech. I
-          am a Python developer and a Integrations Engineer Manager. I use AWS
-          to develop automation pipelines in the cloud. Additionally, I am{' '}
+          am a Python developer and a Integrations Engineering Manager. I use
+          AWS to develop automation pipelines in the cloud. Additionally, I am{' '}
           <GradientText>
             honored to be recognized as an AWS Community Builder in Data.
           </GradientText>{' '}
