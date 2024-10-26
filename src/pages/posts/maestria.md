@@ -2,7 +2,7 @@
 layout: '@/templates/BasePost.astro'
 title: Pursuing a Master’s Degree (life experience)
 description: My proffesional journey. 
-pubDate: 2024-09-18T00:00:00Z
+pubDate: 2024-10-25T00:00:00Z
 imgSrc: '/assets/images/uniandes.jpg'
 imgAlt: 'Image post'
 ---
