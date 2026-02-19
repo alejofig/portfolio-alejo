@@ -1,0 +1,65 @@
+---
+const navLinks = [
+  { href: '/posts/', label: 'Blog' },
+  { href: 'https://github.com/alejofig', label: 'GitHub', external: true },
+  { href: 'https://www.linkedin.com/in/alejofig/', label: 'LinkedIn', external: true },
+];
+---
+
+<nav class="fixed top-0 left-0 right-0 z-50 bg-neutral-950/80 backdrop-blur-sm">
+  <div class="mx-auto flex max-w-2xl items-center justify-between px-6 py-5">
+    <a href="/" class="text-sm font-medium text-neutral-300 hover:text-white transition-colors">
+      alejofig
+    </a>
+
+    <ul class="hidden items-center gap-6 sm:flex">
+      {navLinks.map((link) => (
+        <li>
+          <a
+            href={link.href}
+            class="text-sm text-neutral-500 hover:text-neutral-200 transition-colors"
+            {...(link.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+          >
+            {link.label}
+          </a>
+        </li>
+      ))}
+    </ul>
+
+    <button
+      id="mobile-menu-btn"
+      class="flex sm:hidden text-neutral-500 hover:text-neutral-200"
+      aria-label="Toggle menu"
+    >
+      <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+    </button>
+  </div>
+
+  <div id="mobile-menu" class="hidden sm:hidden border-t border-neutral-800/50 px-6 pb-4">
+    <ul class="flex flex-col gap-3 pt-3">
+      {navLinks.map((link) => (
+        <li>
+          <a
+            href={link.href}
+            class="text-sm text-neutral-500 hover:text-neutral-200 transition-colors"
+            {...(link.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+          >
+            {link.label}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</nav>
+
+<script>
+  document.addEventListener('astro:page-load', () => {
+    const btn = document.getElementById('mobile-menu-btn');
+    const menu = document.getElementById('mobile-menu');
+    if (btn && menu) {
+      btn.addEventListener('click', () => menu.classList.toggle('hidden'));
+    }
+  });
+</script>

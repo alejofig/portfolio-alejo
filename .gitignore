@@ -22,6 +22,22 @@ pnpm-debug.log*
 Thumbs.db
 .history
 
+# astro generated
+.astro/
+
+# claude code
+.claude/
+
+# playwright mcp
+.playwright-mcp/
+
+# bun
+bun.lock
+
+# screenshots
+*.png
+!public/**/*.png
+
 #amplify-do-not-edit-begin
 amplify/\#current-cloud-backend
 amplify/.config/local-*

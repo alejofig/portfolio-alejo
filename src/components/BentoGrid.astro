@@ -1,0 +1,106 @@
+---
+import HeroCard from './HeroCard.astro';
+import AboutCard from './AboutCard.astro';
+import TechStack from './TechStack.astro';
+import ProjectCard from './ProjectCard.astro';
+import Timeline from './Timeline.astro';
+import BlogCard from './BlogCard.astro';
+
+export interface BlogPost {
+  title: string;
+  description: string;
+  pubDate: string;
+  imgSrc: string;
+  imgAlt: string;
+  url: string;
+}
+
+export interface Props {
+  recentPosts: BlogPost[];
+}
+
+const { recentPosts } = Astro.props;
+
+const projects = [
+  {
+    name: 'FitAgent Mobile',
+    description: 'AI-powered fitness coach with Garmin integration. Tracks workouts and adapts training plans with Amazon Bedrock.',
+    link: 'https://github.com/alejofig',
+    tags: ['Flutter', 'AWS', 'Bedrock'],
+  },
+  {
+    name: 'Finance Tracker',
+    description: 'Automated expense tracking with LLM-powered email parsing. Serverless architecture with SES, Lambda, and DynamoDB.',
+    link: 'https://fig.alejofig.com',
+    tags: ['Serverless', 'LLM', 'Python'],
+  },
+  {
+    name: 'LOL Wrapped',
+    description: 'League of Legends analytics with personalized stats, match history analysis, and performance insights.',
+    link: 'https://lolwrapped.com',
+    tags: ['Python', 'AWS', 'Data'],
+  },
+  {
+    name: 'Berghain Analysis',
+    description: "Data analysis of Berlin's iconic club. Web scraping, AI extraction, and interactive visualizations.",
+    link: 'https://berghain.alejofig.com',
+    tags: ['Python', 'Data', 'AI'],
+  },
+];
+---
+
+<main class="mx-auto max-w-2xl px-6 pt-32 pb-8">
+
+  <!-- Hero -->
+  <HeroCard />
+
+  <!-- Highlights -->
+  <div class="mt-8">
+    <AboutCard />
+  </div>
+
+  <!-- Tech Stack -->
+  <div class="mt-8">
+    <TechStack />
+  </div>
+
+  <!-- Divider -->
+  <div class="my-16 border-t border-neutral-800/50"></div>
+
+  <!-- Projects -->
+  <div class="reveal">
+    <h2 class="text-xs font-medium uppercase tracking-widest text-neutral-600 mb-4">Projects</h2>
+    {projects.map((project, i) => (
+      <div class={`reveal reveal-delay-${i + 1}`}>
+        <ProjectCard {...project} />
+      </div>
+    ))}
+  </div>
+
+  <!-- Divider -->
+  <div class="my-16 border-t border-neutral-800/50"></div>
+
+  <!-- Timeline -->
+  <Timeline />
+
+  <!-- Divider -->
+  <div class="my-16 border-t border-neutral-800/50"></div>
+
+  <!-- Recent Posts -->
+  {recentPosts.length > 0 && (
+    <div class="reveal">
+      <div class="flex items-baseline justify-between mb-4">
+        <h2 class="text-xs font-medium uppercase tracking-widest text-neutral-600">Writing</h2>
+        <a href="/posts/" class="text-xs text-neutral-600 hover:text-neutral-400 transition-colors">
+          View all
+        </a>
+      </div>
+      {recentPosts.map((post, i) => (
+        <div class={`reveal reveal-delay-${i + 1}`}>
+          <BlogCard {...post} />
+        </div>
+      ))}
+    </div>
+  )}
+
+</main>

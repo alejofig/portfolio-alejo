@@ -1,0 +1,13 @@
+---
+const skills = ['AWS', 'Python', 'TypeScript', 'AI/LLMs', 'Serverless', 'Terraform', 'Flutter', 'Docker'];
+---
+
+<section class="reveal">
+  <div class="flex flex-wrap justify-center gap-2">
+    {skills.map((skill) => (
+      <span class="rounded-full border border-neutral-800 px-3 py-1 text-xs text-neutral-400 hover:border-neutral-600 hover:text-neutral-300 transition-colors">
+        {skill}
+      </span>
+    ))}
+  </div>
+</section>

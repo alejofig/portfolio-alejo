@@ -1,0 +1,19 @@
+---
+const stats = [
+  { value: '2x', label: 'AI Hackathon Winner' },
+  { value: '3yr', label: 'AWS Community Builder' },
+  { value: '4', label: 'Live Projects' },
+  { value: '4.56', label: "GPA Master's" },
+];
+---
+
+<div class="glass-card p-6 reveal reveal-delay-2">
+  <div class="grid grid-cols-2 gap-4">
+    {stats.map((stat) => (
+      <div class="text-center">
+        <div class="text-2xl font-bold gradient-text">{stat.value}</div>
+        <div class="mt-1 text-xs text-slate-400">{stat.label}</div>
+      </div>
+    ))}
+  </div>
+</div>

@@ -13,7 +13,7 @@ const Navbar = () => (
         <Logo
           icon={
             <svg
-              className="mr-1 h-10 w-10 stroke-cyan-600"
+              className="mr-1 size-10 stroke-cyan-600"
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
               fill="none"
@@ -28,13 +28,16 @@ const Navbar = () => (
               <path d="M4 20h14"></path>
             </svg>
           }
-          name="Alejofig's Blog"
+          name="Alejofig"
         />
       </a>
 
       <NavMenu>
         <NavMenuItem href="/posts/">Blogs</NavMenuItem>
         <NavMenuItem href="https://github.com/alejofig">GitHub</NavMenuItem>
+        <NavMenuItem href="https://www.linkedin.com/in/alejofig/">
+          LinkedIn
+        </NavMenuItem>
       </NavMenu>
     </NavbarTwoColumns>
   </Section>

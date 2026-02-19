@@ -1,0 +1,24 @@
+---
+const events = [
+  { year: '2026', title: 'AI Builder @ Simetrik' },
+  { year: '2024', title: 'Engineering Manager @ Simetrik', note: 'Leading 20+ engineers in Integrations' },
+  { year: '2023', title: 'AWS Community Builder + AI Hackathon Winner' },
+  { year: '2022', title: "Master's in Engineering, Universidad de los Andes", note: 'GPA 4.56' },
+  { year: '2021', title: 'Software Architect @ Simetrik', note: '250M+ monthly transactions' },
+];
+---
+
+<section class="reveal">
+  <h2 class="text-xs font-medium uppercase tracking-widest text-neutral-600 mb-6">Career</h2>
+  <div class="flex flex-col gap-4">
+    {events.map((event) => (
+      <div class="flex gap-4 items-baseline">
+        <span class="text-xs text-neutral-600 tabular-nums shrink-0 w-10">{event.year}</span>
+        <div>
+          <p class="text-sm text-neutral-300">{event.title}</p>
+          {event.note && <p class="text-xs text-neutral-600 mt-0.5">{event.note}</p>}
+        </div>
+      </div>
+    ))}
+  </div>
+</section>

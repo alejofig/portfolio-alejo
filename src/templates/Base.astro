@@ -1,7 +1,9 @@
 ---
-import { Footer } from '@/partials/Footer';
-import { Navbar } from '@/partials/Navbar';
+import { ViewTransitions } from 'astro:transitions';
+import NavbarNew from '@/components/Navbar.astro';
+import FooterNew from '@/components/Footer.astro';
 import { AppConfig } from '@/utils/AppConfig';
+import '@/styles/animations.css';
 
 export interface Props {
   head: {
@@ -13,6 +15,28 @@ export interface Props {
 const {
   head: { title, description },
 } = Astro.props as Props;
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Daniel Alejandro Figueroa Arias',
+  alternateName: 'Alejofig',
+  url: 'https://www.alejofig.com',
+  jobTitle: 'Engineering Manager',
+  worksFor: {
+    '@type': 'Organization',
+    name: 'Simetrik',
+  },
+  alumniOf: {
+    '@type': 'CollegeOrUniversity',
+    name: 'Universidad de los Andes',
+  },
+  sameAs: [
+    'https://www.linkedin.com/in/alejofig/',
+    'https://github.com/alejofig',
+    'https://medium.com/@1alejofig1',
+  ],
+};
 ---
 
 <html lang='en'>
@@ -23,14 +47,47 @@ const {
     <meta name='description' content={description} />
     <meta name='author' content={AppConfig.author} />
 
+    <meta property='og:title' content={title} />
+    <meta property='og:description' content={description} />
+    <meta property='og:image' content='/assets/images/berlin.png' />
+    <meta property='og:url' content='https://alejofig.com' />
+    <meta property='og:type' content='website' />
+    <meta property='og:site_name' content={AppConfig.site_name} />
+
+    <meta name='twitter:card' content='summary_large_image' />
+    <meta name='twitter:title' content={title} />
+    <meta name='twitter:description' content={description} />
+    <meta name='twitter:image' content='/assets/images/berlin.png' />
+
     <link rel='alternate' type='application/rss+xml' href='/rss.xml' />
     <link rel='icon' type='image/x-icon' href='/favicon.ico' />
+
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+
+    <ViewTransitions />
   </head>
-  <body class='bg-slate-900 text-gray-100'>
-    <Navbar />
+  <body class='min-h-screen bg-neutral-950 text-neutral-100 antialiased'>
+    <NavbarNew />
 
     <slot></slot>
 
-    <Footer />
+    <FooterNew />
+
+    <script>
+      function initReveal() {
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+              }
+            });
+          },
+          { threshold: 0.1 }
+        );
+        document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+      }
+      document.addEventListener('astro:page-load', initReveal);
+    </script>
   </body>
 </html>

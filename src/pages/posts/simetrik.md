@@ -1,7 +1,7 @@
 ---
 layout: '@/templates/BasePost.astro'
 title: Working in a Startup (Simetrik) (life/work experience)
-description: My proffesional journey. 
+description: My professional journey.
 pubDate: 2024-09-18T00:00:00Z
 imgSrc: '/assets/images/Simetrik.jpeg'
 imgAlt: 'Image post'

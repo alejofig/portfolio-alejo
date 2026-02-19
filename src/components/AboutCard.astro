@@ -1,0 +1,16 @@
+---
+const highlights = [
+  '2x AI Hackathon Winner',
+  'AWS Community Builder (3yr)',
+  '4 Live Projects',
+  "Master's GPA 4.56",
+];
+---
+
+<section class="reveal">
+  <div class="flex flex-wrap justify-center gap-x-6 gap-y-2">
+    {highlights.map((item) => (
+      <span class="text-xs text-neutral-500">{item}</span>
+    ))}
+  </div>
+</section>

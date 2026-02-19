@@ -1,6 +1,6 @@
 ---
 layout: '@/templates/BasePost.astro'
-title: Atendee Re:Invent in Vegas (life experience).
+title: Attendee Re:Invent in Vegas (life experience).
 description: How to make it real. 
 pubDate: 2024-12-26T00:00:00Z
 imgSrc: '/assets/images/vegas.jpg'

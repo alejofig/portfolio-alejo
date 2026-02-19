@@ -1,0 +1,33 @@
+---
+export interface Props {
+  name: string;
+  description: string;
+  link: string;
+  tags: string[];
+}
+
+const { name, description, link, tags } = Astro.props;
+---
+
+<a
+  href={link}
+  target="_blank"
+  rel="noopener noreferrer"
+  class="group block"
+>
+  <div class="py-4 border-b border-neutral-800/50">
+    <div class="flex items-baseline justify-between gap-4">
+      <h3 class="text-sm font-medium text-neutral-300 group-hover:text-white transition-colors">
+        {name}
+      </h3>
+      <div class="hidden sm:flex items-center gap-2 shrink-0">
+        {tags.map((tag) => (
+          <span class="text-[10px] text-neutral-600">{tag}</span>
+        ))}
+      </div>
+    </div>
+    <p class="mt-1 text-xs text-neutral-500 leading-relaxed">
+      {description}
+    </p>
+  </div>
+</a>

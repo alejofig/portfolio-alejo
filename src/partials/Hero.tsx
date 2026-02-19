@@ -15,26 +15,21 @@ const Hero = () => (
       }
       description={
         <>
-          <GradientText>My mindset:</GradientText> Help people by solving their
-          problems with tech. I love to tackle any kind of problem with tech. I
-          am a Python developer and a Integrations Engineering Manager. I use
-          AWS to develop automation pipelines in the cloud. Additionally, I am{' '}
-          <GradientText>
-            honored to be recognized as an AWS Community Builder in Data.
-          </GradientText>{' '}
-          In my free time, I enjoy mixing music, attending concerts (especially
-          electronic music events), staying active with regular exercise,{' '}
-          <GradientText>indulging in a good read</GradientText>, and{' '}
-          <GradientText>
-            sharing my passion for food through reviews on Google Maps.
-          </GradientText>
+          <GradientText>Engineering Manager</GradientText> at Simetrik · AWS
+          Community Builder in Data
+          <br />
+          Building DevTools, AI-powered integrations, and serverless
+          architectures with AWS, Python, and LLMs.
+          <br />
+          Outside work: triathlon training, electronic music production, and
+          reading.
         </>
       }
       avatar={
         <img
           className="h-80 w-64"
           src="/assets/images/berlin.png"
-          alt="Avatar image"
+          alt="Alejandro Figueroa in Berlin"
           loading="lazy"
         />
       }
@@ -43,7 +38,13 @@ const Hero = () => (
           <a href="https://www.linkedin.com/in/alejofig/">
             <HeroSocial
               src="/assets/images/linkedin-icon.png"
-              alt="Linkedin icon"
+              alt="LinkedIn icon"
+            />
+          </a>
+          <a href="https://github.com/alejofig">
+            <HeroSocial
+              src="/assets/images/github-icon.svg"
+              alt="GitHub icon"
             />
           </a>
           <a href="https://medium.com/@1alejofig1">
@@ -52,7 +53,7 @@ const Hero = () => (
           <a href="https://soundcloud.com/alejandro-figueroa-74">
             <HeroSocial
               src="/assets/images/soundcloud.svg"
-              alt="soundcloud icon"
+              alt="SoundCloud icon"
             />
           </a>
         </>

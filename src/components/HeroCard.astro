@@ -1,0 +1,44 @@
+---
+const socialLinks = [
+  { href: 'https://www.linkedin.com/in/alejofig/', label: 'LinkedIn' },
+  { href: 'https://github.com/alejofig', label: 'GitHub' },
+  { href: 'https://medium.com/@1alejofig1', label: 'Medium' },
+  { href: 'https://soundcloud.com/alejandro-figueroa-74', label: 'SoundCloud' },
+];
+---
+
+<section class="reveal">
+  <div class="flex flex-col items-center text-center gap-6">
+    <img
+      src="/assets/images/berlin.png"
+      alt="Alejandro Figueroa"
+      class="h-28 w-28 rounded-full object-cover grayscale hover:grayscale-0 transition-all duration-500"
+      loading="eager"
+      width="112"
+      height="112"
+    />
+    <div>
+      <h1 class="text-2xl font-medium text-neutral-100 tracking-tight">
+        Alejandro Figueroa
+      </h1>
+      <p class="mt-2 text-sm text-neutral-500">
+        AI Builder @ Simetrik
+      </p>
+    </div>
+    <p class="text-sm text-neutral-400 leading-relaxed max-w-md">
+      Building AI-powered tools & leading engineering teams. AWS Community Builder in Data & AI Engineering. Master's from Universidad de los Andes.
+    </p>
+    <div class="flex items-center gap-4">
+      {socialLinks.map((link) => (
+        <a
+          href={link.href}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-xs text-neutral-600 hover:text-neutral-300 transition-colors"
+        >
+          {link.label}
+        </a>
+      ))}
+    </div>
+  </div>
+</section>
