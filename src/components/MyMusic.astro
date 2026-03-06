@@ -1,0 +1,28 @@
+---
+const soundcloudUrl = 'https://soundcloud.com/alejandro-figueroa-74';
+---
+
+<section class="reveal">
+  <h2 class="mb-6 text-xs font-medium uppercase tracking-widest text-neutral-600">My Music</h2>
+  <a
+    href={soundcloudUrl}
+    target="_blank"
+    rel="noopener noreferrer"
+    class="group flex items-center gap-4 rounded-lg border border-neutral-800/50 p-4 transition-colors hover:border-neutral-700"
+  >
+    <img
+      src="/assets/images/soundcloud.svg"
+      alt="SoundCloud"
+      class="h-10 w-10 rounded"
+      width="40"
+      height="40"
+      loading="lazy"
+    />
+    <div class="flex-1">
+      <p class="text-sm text-neutral-300 transition-colors group-hover:text-neutral-100">
+        Alejandro Figueroa on SoundCloud
+      </p>
+      <p class="mt-0.5 text-xs text-neutral-600">Listen to my tracks and mixes &rarr;</p>
+    </div>
+  </a>
+</section>
