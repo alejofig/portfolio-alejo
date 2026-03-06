@@ -1,0 +1,47 @@
+---
+const contactLinks = [
+  {
+    label: 'Email',
+    display: '1alejofig1@gmail.com',
+    href: 'mailto:1alejofig1@gmail.com',
+  },
+  {
+    label: 'LinkedIn',
+    display: 'alejofig',
+    href: 'https://www.linkedin.com/in/alejofig/',
+  },
+  {
+    label: 'GitHub',
+    display: 'alejofig',
+    href: 'https://github.com/alejofig',
+  },
+  {
+    label: 'Medium',
+    display: '@1alejofig1',
+    href: 'https://medium.com/@1alejofig1',
+  },
+];
+---
+
+<section class="reveal">
+  <h2
+    class="mb-6 text-xs font-medium uppercase tracking-widest text-neutral-600"
+  >
+    Contact
+  </h2>
+  <div class="flex flex-col gap-4">
+    {contactLinks.map((item) => (
+      <div class="flex items-baseline gap-4">
+        <span class="w-16 shrink-0 text-xs text-neutral-600">{item.label}</span>
+        <a
+          href={item.href}
+          target={item.href.startsWith('mailto') ? '_self' : '_blank'}
+          rel="noopener noreferrer"
+          class="text-sm text-neutral-300 transition-colors hover:text-neutral-100"
+        >
+          {item.display}
+        </a>
+      </div>
+    ))}
+  </div>
+</section>

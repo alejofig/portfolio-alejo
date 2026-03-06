@@ -1,11 +1,12 @@
 ---
-import HeroCard from './HeroCard.astro';
 import AboutCard from './AboutCard.astro';
-import TechStack from './TechStack.astro';
-import ProjectCard from './ProjectCard.astro';
-import Timeline from './Timeline.astro';
-import Speaking from './Speaking.astro';
 import BlogCard from './BlogCard.astro';
+import Contact from './Contact.astro';
+import HeroCard from './HeroCard.astro';
+import ProjectCard from './ProjectCard.astro';
+import Speaking from './Speaking.astro';
+import TechStack from './TechStack.astro';
+import Timeline from './Timeline.astro';
 
 export interface BlogPost {
   title: string;
@@ -25,33 +26,36 @@ const { recentPosts } = Astro.props;
 const projects = [
   {
     name: 'FitAgent Mobile',
-    description: 'AI-powered fitness coach with Garmin integration. Tracks workouts and adapts training plans with Amazon Bedrock.',
+    description:
+      'AI-powered fitness coach with Garmin integration. Tracks workouts and adapts training plans with Amazon Bedrock.',
     link: 'https://github.com/alejofig',
     tags: ['Flutter', 'AWS', 'Bedrock'],
   },
   {
     name: 'Finance Tracker',
-    description: 'Automated expense tracking with LLM-powered email parsing. Serverless architecture with SES, Lambda, and DynamoDB.',
+    description:
+      'Automated expense tracking with LLM-powered email parsing. Serverless architecture with SES, Lambda, and DynamoDB.',
     link: 'https://fig.alejofig.com',
     tags: ['Serverless', 'LLM', 'Python'],
   },
   {
     name: 'LOL Wrapped',
-    description: 'League of Legends analytics with personalized stats, match history analysis, and performance insights.',
+    description:
+      'League of Legends analytics with personalized stats, match history analysis, and performance insights.',
     link: 'https://lolwrapped.com',
     tags: ['Python', 'AWS', 'Data'],
   },
   {
     name: 'Berghain Analysis',
-    description: "Data analysis of Berlin's iconic club. Web scraping, AI extraction, and interactive visualizations.",
+    description:
+      "Data analysis of Berlin's iconic club. Web scraping, AI extraction, and interactive visualizations.",
     link: 'https://berghain.alejofig.com',
     tags: ['Python', 'Data', 'AI'],
   },
 ];
 ---
 
-<main class="mx-auto max-w-2xl px-6 pt-32 pb-8">
-
+<main class="mx-auto max-w-2xl px-6 pb-8 pt-32">
   <!-- Hero -->
   <HeroCard />
 
@@ -70,7 +74,11 @@ const projects = [
 
   <!-- Projects -->
   <div class="reveal">
-    <h2 class="text-xs font-medium uppercase tracking-widest text-neutral-600 mb-4">Projects</h2>
+    <h2
+      class="mb-4 text-xs font-medium uppercase tracking-widest text-neutral-600"
+    >
+      Projects
+    </h2>
     {projects.map((project, i) => (
       <div class={`reveal reveal-delay-${i + 1}`}>
         <ProjectCard {...project} />
@@ -93,12 +101,23 @@ const projects = [
   <!-- Divider -->
   <div class="my-16 border-t border-neutral-800/50"></div>
 
+  <!-- Contact -->
+  <Contact />
+
+  <!-- Divider -->
+  <div class="my-16 border-t border-neutral-800/50"></div>
+
   <!-- Recent Posts -->
   {recentPosts.length > 0 && (
     <div class="reveal">
-      <div class="flex items-baseline justify-between mb-4">
-        <h2 class="text-xs font-medium uppercase tracking-widest text-neutral-600">Writing</h2>
-        <a href="/posts/" class="text-xs text-neutral-600 hover:text-neutral-400 transition-colors">
+      <div class="mb-4 flex items-baseline justify-between">
+        <h2 class="text-xs font-medium uppercase tracking-widest text-neutral-600">
+          Writing
+        </h2>
+        <a
+          href="/posts/"
+          class="text-xs text-neutral-600 transition-colors hover:text-neutral-400"
+        >
           View all
         </a>
       </div>
@@ -109,5 +128,4 @@ const projects = [
       ))}
     </div>
   )}
-
 </main>
