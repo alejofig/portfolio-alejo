@@ -7,3 +7,10 @@ export const AppConfig = {
   locale_region: 'en-us',
   locale: 'en',
 };
+
+export const SocialLinks = {
+  linkedin: 'https://www.linkedin.com/in/alejofig/',
+  github: 'https://github.com/alejofig',
+  medium: 'https://medium.com/@1alejofig1',
+  soundcloud: 'https://soundcloud.com/alejandro-figueroa-74',
+};

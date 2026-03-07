@@ -1,5 +1,5 @@
 ---
-const SOUNDCLOUD_URL = 'https://soundcloud.com/alejandro-figueroa-74';
+import { SocialLinks } from '@/utils/AppConfig';
 
 const tracks = [
   {
@@ -43,7 +43,7 @@ const venues = [
   <div class="flex items-baseline justify-between mb-6">
     <h2 class="text-xs font-medium uppercase tracking-widest text-neutral-600">Music</h2>
     <a
-      href={SOUNDCLOUD_URL}
+      href={SocialLinks.soundcloud}
       target="_blank"
       rel="noopener noreferrer"
       class="text-xs text-neutral-600 hover:text-neutral-400 transition-colors"
