@@ -2,7 +2,7 @@
 import { ViewTransitions } from 'astro:transitions';
 import NavbarNew from '@/components/Navbar.astro';
 import FooterNew from '@/components/Footer.astro';
-import { AppConfig } from '@/utils/AppConfig';
+import { AppConfig, socialLinks } from '@/utils/AppConfig';
 import '@/styles/animations.css';
 
 export interface Props {
@@ -31,11 +31,7 @@ const jsonLd = {
     '@type': 'CollegeOrUniversity',
     name: 'Universidad de los Andes',
   },
-  sameAs: [
-    'https://www.linkedin.com/in/alejofig/',
-    'https://github.com/alejofig',
-    'https://medium.com/@1alejofig1',
-  ],
+  sameAs: socialLinks.map((link) => link.href),
 };
 ---
 
