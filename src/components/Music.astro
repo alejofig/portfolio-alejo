@@ -1,0 +1,56 @@
+---
+const SOUNDCLOUD_URL = 'https://soundcloud.com/alejandro-figueroa-74';
+
+const tracks = [
+  {
+    title: 'Techno Set Vol. 1',
+    genre: 'Techno',
+    year: '2024',
+    link: SOUNDCLOUD_URL,
+  },
+  {
+    title: 'Berlin Nights',
+    genre: 'Electronic',
+    year: '2024',
+    link: SOUNDCLOUD_URL,
+  },
+  {
+    title: 'Underground Mix',
+    genre: 'Techno',
+    year: '2023',
+    link: SOUNDCLOUD_URL,
+  },
+];
+---
+
+<section class="reveal">
+  <div class="flex items-baseline justify-between mb-6">
+    <h2 class="text-xs font-medium uppercase tracking-widest text-neutral-600">Music</h2>
+    <a
+      href={SOUNDCLOUD_URL}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="text-xs text-neutral-600 hover:text-neutral-400 transition-colors"
+    >
+      SoundCloud &rarr;
+    </a>
+  </div>
+  <div class="flex flex-col gap-4">
+    {tracks.map((track) => (
+      <div class="flex gap-4 items-baseline">
+        <span class="text-xs text-neutral-600 tabular-nums shrink-0 w-10">{track.year}</span>
+        <div>
+          <a
+            href={track.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-sm text-neutral-300 hover:text-neutral-100 transition-colors"
+          >
+            {track.title}
+          </a>
+          <p class="text-xs text-neutral-600 mt-0.5">{track.genre}</p>
+        </div>
+      </div>
+    ))}
+  </div>
+</section>
