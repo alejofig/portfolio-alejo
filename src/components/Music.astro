@@ -3,23 +3,39 @@ const SOUNDCLOUD_URL = 'https://soundcloud.com/alejandro-figueroa-74';
 
 const tracks = [
   {
-    title: 'Techno Set Vol. 1',
-    genre: 'Techno',
-    year: '2024',
-    link: SOUNDCLOUD_URL,
+    artist: 'Aphex Twin',
+    title: 'Selected Ambient Works 85-92',
+    note: 'The record that opened the door to electronic music for me',
+    link: 'https://aphextwin.warp.net/',
   },
   {
-    title: 'Berlin Nights',
-    genre: 'Electronic',
-    year: '2024',
-    link: SOUNDCLOUD_URL,
+    artist: 'Schacke',
+    title: 'Fast Techno #1 2022',
+    note: 'The set that soundtracked my first night at Tresor, Berlin',
+    link: 'https://soundcloud.com/schacke',
   },
   {
-    title: 'Underground Mix',
-    genre: 'Techno',
-    year: '2023',
-    link: SOUNDCLOUD_URL,
+    artist: 'DJ UVB',
+    title: 'The School of Intolerance EP',
+    note: 'Found at Hard Wax, Berlin — Least at Last is a masterpiece',
   },
+  {
+    artist: 'Verraco',
+    title: 'Live sets',
+    note: "Colombia's finest export to the global techno scene",
+  },
+  {
+    artist: 'Various',
+    title: 'Berghain Resident Mixes',
+    note: 'Ongoing obsession — the data behind who plays most at Berghain',
+    link: 'https://berghain.alejofig.com',
+  },
+];
+
+const venues = [
+  { name: 'Tresor', abbr: 'BER', note: 'Techno in an abandoned power plant basement' },
+  { name: 'Berghain', abbr: 'BER', note: 'The iconic cathedral of electronic music' },
+  { name: 'Hard Wax', abbr: 'BER', note: 'Record store where vinyl speak louder than words' },
 ];
 ---
 
@@ -35,20 +51,48 @@ const tracks = [
       SoundCloud &rarr;
     </a>
   </div>
-  <div class="flex flex-col gap-4">
+
+  <!-- Tracks & Records -->
+  <div class="flex flex-col gap-4 mb-8">
     {tracks.map((track) => (
       <div class="flex gap-4 items-baseline">
-        <span class="text-xs text-neutral-600 tabular-nums shrink-0 w-10">{track.year}</span>
+        <span class="text-xs text-neutral-600 shrink-0 w-10 leading-5">♪</span>
         <div>
-          <a
-            href={track.link}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="text-sm text-neutral-300 hover:text-neutral-100 transition-colors"
-          >
-            {track.title}
-          </a>
-          <p class="text-xs text-neutral-600 mt-0.5">{track.genre}</p>
+          <p class="text-sm text-neutral-300">
+            {track.artist}
+            <span class="text-neutral-600"> — </span>
+            {track.link ? (
+              <a
+                href={track.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="hover:text-neutral-100 transition-colors"
+              >
+                {track.title}
+              </a>
+            ) : (
+              <span>{track.title}</span>
+            )}
+          </p>
+          {track.note && (
+            <p class="text-xs text-neutral-600 mt-0.5">{track.note}</p>
+          )}
+        </div>
+      </div>
+    ))}
+  </div>
+
+  <!-- Venues -->
+  <h3 class="text-xs font-medium uppercase tracking-widest text-neutral-600 mb-4">Venues</h3>
+  <div class="flex flex-col gap-3">
+    {venues.map((venue) => (
+      <div class="flex gap-4 items-baseline">
+        <span class="text-xs text-neutral-600 tabular-nums shrink-0 w-10">{venue.abbr}</span>
+        <div>
+          <p class="text-sm text-neutral-300">{venue.name}</p>
+          {venue.note && (
+            <p class="text-xs text-neutral-600 mt-0.5">{venue.note}</p>
+          )}
         </div>
       </div>
     ))}
