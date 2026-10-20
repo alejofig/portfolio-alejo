@@ -55,5 +55,8 @@
   "volta": {
     "node": "16.15.1"
   },
-  "author": "Ixartz (https://github.com/ixartz)"
+  "author": "Ixartz (https://github.com/ixartz)",
+  "overrides": {
+    "sitemap": "7.1.2"
+  }
 }
