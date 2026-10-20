@@ -1,9 +1,9 @@
 export const AppConfig = {
   site_name: 'Alejofig',
-  title: 'Alejandro Figueroa - Software Engineer & AWS Community Builder',
+  title: 'Alejandro Figueroa — AI agents for WhatsApp in Latin America',
   description:
-    'Software Engineer building DevTools and AI-powered solutions. AWS Community Builder in Data.',
-  author: 'Alejofig',
+    'I build production AI agents that sell, collect payments and book appointments on WhatsApp for businesses in Latin America.',
+  author: 'Alejandro Figueroa',
   locale_region: 'en-us',
   locale: 'en',
 };

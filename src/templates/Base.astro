@@ -3,78 +3,173 @@ import { ViewTransitions } from 'astro:transitions';
 import NavbarNew from '@/components/Navbar.astro';
 import FooterNew from '@/components/Footer.astro';
 import { AppConfig } from '@/utils/AppConfig';
-import '@/styles/animations.css';
+import { awards, copy, homePath, type Lang, markdownPath, organizations, person, SITE } from '@/data/profile';
+import '@/styles/global.css';
 
 export interface Props {
   head: {
     title: string;
     description: string;
   };
+  lang?: Lang;
+  // Set on the home pages: adds hreflang alternates, the markdown view and ProfilePage schema.
+  profile?: boolean;
+  // Navbar + footer; the home pages bring their own sidebar shell.
+  chrome?: boolean;
 }
 
 const {
   head: { title, description },
+  lang = 'es',
+  profile = false,
+  chrome = true,
 } = Astro.props as Props;
 
-const jsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'Person',
-  name: 'Daniel Alejandro Figueroa Arias',
-  alternateName: 'Alejofig',
-  url: 'https://www.alejofig.com',
-  jobTitle: 'Engineering Manager',
-  worksFor: {
+const canonical = new URL(Astro.url.pathname, SITE).href;
+const ogImage = new URL(person.image, SITE).href;
+const personId = `${SITE}/#person`;
+
+const graph: Record<string, unknown>[] = [
+  {
+    '@type': 'WebSite',
+    '@id': `${SITE}/#website`,
+    url: `${SITE}/`,
+    name: AppConfig.site_name,
+    inLanguage: ['es', 'en'],
+    publisher: { '@id': personId },
+  },
+  {
+    '@type': 'Person',
+    '@id': personId,
+    name: person.name,
+    alternateName: [person.legalName, person.handle],
+    url: `${SITE}/`,
+    image: ogImage,
+    description: copy[lang].meta.description,
+    jobTitle: copy[lang].jobTitle,
+    worksFor: { '@type': 'Organization', name: 'Clara', url: 'https://www.clara.com/' },
+    hasOccupation: [
+      { '@type': 'Occupation', name: 'Forward Deployed Engineer' },
+      { '@type': 'Occupation', name: 'CEO & Founder, tuasistente.co' },
+      { '@type': 'Occupation', name: 'CEO & Founder, Milmanillas' },
+    ],
+    address: { '@type': 'PostalAddress', addressLocality: person.locality, addressCountry: person.country },
+    alumniOf: { '@type': 'CollegeOrUniversity', name: 'Universidad de los Andes' },
+    award: awards.map((a) => `${a.title[lang]} · ${a.org} (${a.date})`),
+    knowsAbout: person.knowsAbout,
+    knowsLanguage: ['es', 'en'],
+    sameAs: Object.values(person.links),
+    makesOffer: {
+      '@type': 'Offer',
+      itemOffered: {
+        '@type': 'Service',
+        name: lang === 'es' ? 'Agentes de IA para WhatsApp a la medida' : 'Custom WhatsApp AI agents',
+        areaServed: 'Latin America',
+      },
+    },
+  },
+  ...organizations.map((o) => ({
     '@type': 'Organization',
-    name: 'Simetrik',
-  },
-  alumniOf: {
-    '@type': 'CollegeOrUniversity',
-    name: 'Universidad de los Andes',
-  },
-  sameAs: [
-    'https://www.linkedin.com/in/alejofig/',
-    'https://github.com/alejofig',
-    'https://medium.com/@1alejofig1',
-  ],
-};
+    name: o.name,
+    url: o.url,
+    description: o.description[lang],
+    founder: { '@id': personId },
+    areaServed: 'CO',
+  })),
+];
+
+if (profile) {
+  graph.push({
+    '@type': 'ProfilePage',
+    '@id': `${canonical}#profilepage`,
+    url: canonical,
+    name: title,
+    inLanguage: lang,
+    isPartOf: { '@id': `${SITE}/#website` },
+    mainEntity: { '@id': personId },
+  });
+}
+
+const jsonLd = { '@context': 'https://schema.org', '@graph': graph };
 ---
 
-<html lang='en'>
+<html lang={lang}>
   <head>
     <meta charset='UTF-8' />
     <meta name='viewport' content='width=device-width, initial-scale=1.0' />
     <title>{title}</title>
     <meta name='description' content={description} />
-    <meta name='author' content={AppConfig.author} />
+    <meta name='author' content={person.name} />
+    <link rel='canonical' href={canonical} />
+
+    {profile && (
+      <>
+        <link rel='alternate' hreflang='es' href={new URL(homePath.es, SITE).href} />
+        <link rel='alternate' hreflang='en' href={new URL(homePath.en, SITE).href} />
+        <link rel='alternate' hreflang='x-default' href={new URL(homePath.es, SITE).href} />
+        <link rel='alternate' type='text/markdown' href={markdownPath[lang]} title='Profile (Markdown)' />
+      </>
+    )}
+    <link rel='alternate' type='text/plain' href='/llms.txt' title='llms.txt' />
 
     <meta property='og:title' content={title} />
     <meta property='og:description' content={description} />
-    <meta property='og:image' content='/assets/images/berlin.png' />
-    <meta property='og:url' content='https://alejofig.com' />
-    <meta property='og:type' content='website' />
+    <meta property='og:image' content={ogImage} />
+    <meta property='og:url' content={canonical} />
+    <meta property='og:type' content={profile ? 'profile' : 'website'} />
+    <meta property='og:locale' content={lang === 'es' ? 'es_CO' : 'en_US'} />
     <meta property='og:site_name' content={AppConfig.site_name} />
 
     <meta name='twitter:card' content='summary_large_image' />
     <meta name='twitter:title' content={title} />
     <meta name='twitter:description' content={description} />
-    <meta name='twitter:image' content='/assets/images/berlin.png' />
+    <meta name='twitter:image' content={ogImage} />
 
     <link rel='alternate' type='application/rss+xml' href='/rss.xml' />
     <link rel='icon' type='image/x-icon' href='/favicon.ico' />
 
-    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+    <link rel='preconnect' href='https://fonts.googleapis.com' />
+    <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin />
+    <link
+      rel='stylesheet'
+      href='https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap'
+    />
+
+    <!-- Theme before paint: saved choice, else the OS preference -->
+    <script is:inline>
+      (function () {
+        function apply() {
+          var saved = null;
+          try { saved = localStorage.getItem('theme'); } catch (e) {}
+          var dark = saved ? saved === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches;
+          document.documentElement.classList.toggle('dark', dark);
+        }
+        apply();
+        document.addEventListener('astro:after-swap', apply);
+      })();
+    </script>
+
+    <script type='application/ld+json' set:html={JSON.stringify(jsonLd)} />
 
     <ViewTransitions />
   </head>
-  <body class='min-h-screen bg-neutral-950 text-neutral-100 antialiased'>
-    <NavbarNew />
+  <body class='min-h-screen bg-page text-ink font-sans'>
+    <a href='#main' class='skip-link'>{lang === 'es' ? 'ir al contenido' : 'skip to content'}</a>
 
-    <slot></slot>
+    {chrome && <NavbarNew lang={lang} switchLang={profile} />}
 
-    <FooterNew />
+    <main id='main'>
+      <slot></slot>
+    </main>
+
+    {chrome && <FooterNew lang={lang} />}
 
     <script>
       function initReveal() {
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+          document.querySelectorAll('.reveal').forEach((el) => el.classList.add('visible'));
+          return;
+        }
         const observer = new IntersectionObserver(
           (entries) => {
             entries.forEach((entry) => {

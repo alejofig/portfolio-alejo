@@ -1,0 +1,226 @@
+---
+import type { IFrontmatter } from 'astro-boilerplate-components';
+
+import Panel from '@/components/home/Panel.astro';
+import Sidebar from '@/components/home/Sidebar.astro';
+import ApprovalCard from '@/components/ui/ApprovalCard';
+import StreamingText from '@/components/ui/StreamingText';
+import TaskRows from '@/components/ui/TaskRows';
+import Thinking from '@/components/ui/Thinking';
+import ToolChips from '@/components/ui/ToolChips';
+import {
+  awards,
+  clara,
+  contact,
+  copy,
+  education,
+  jobs,
+  type Lang,
+  markdownPath,
+  mili,
+  panels,
+  projects,
+  talks,
+  tuasistente,
+} from '@/data/profile';
+import Base from '@/templates/Base.astro';
+import { sortByDate } from '@/utils/Posts';
+
+export interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = copy[lang];
+
+const allPosts = await Astro.glob<IFrontmatter>('../pages/posts/*.md');
+const recentPosts = sortByDate(allPosts).slice(0, 4);
+
+const panel = (id: string) => {
+  const i = panels.findIndex((p) => p.id === id);
+  const p = panels[i]!;
+  return { num: i + 1, id, title: p.title[lang], note: p.note[lang] };
+};
+
+const tools = mili.tools[lang];
+const jobRows = jobs.map((j) => ({
+  key: j.key,
+  label: j.role,
+  sub: j.org,
+  amount: j.period[lang],
+  running: j.current,
+  details: j.details[lang],
+}));
+const dateFmt = (d: string) =>
+  new Date(d).toLocaleDateString(lang === 'es' ? 'es-CO' : 'en-US', { year: 'numeric', month: 'short' });
+---
+
+<Base head={t.meta} lang={lang} profile chrome={false}>
+  <div class="hatch min-h-screen">
+    <div class="mx-auto max-w-container bg-page dashed-x md:grid md:grid-cols-[288px_minmax(0,1fr)]">
+      <Sidebar lang={lang} />
+
+      <div class="min-w-0">
+        <!-- 01 Mili -->
+        <Panel {...panel('mili')}>
+          <div class="grid w-full max-w-[44rem] grid-cols-1 items-start gap-10 md:grid-cols-2">
+            <div class="flex flex-col gap-2" aria-label={t.example}>
+              <p class="mb-1 font-mono text-[11px] text-ink-3">{t.example}</p>
+              {mili.chat[lang].map((m, i) => (
+                <div
+                  class={`max-w-[88%] rounded-xl px-3 py-1.5 text-[13px] leading-[1.45] ${
+                    m.from === 'agent' ? 'self-end bg-green-tint text-ink' : 'self-start bg-surface text-ink shadow-hairline'
+                  }`}
+                  style={`animation: fade-up 400ms cubic-bezier(0.23,1,0.32,1) ${i * 700}ms both`}
+                >
+                  {m.text}
+                </div>
+              ))}
+            </div>
+            <ToolChips
+              client:load
+              steps={tools.steps as any}
+              diffs={tools.diffs as any}
+              diffLines={tools.diffLines as any}
+              labels={{ header: tools.header, more: tools.more }}
+              moreHref={mili.url}
+            />
+          </div>
+        </Panel>
+
+        <!-- 02 tuasistente.co -->
+        <Panel {...panel('tuasistente')}>
+          <StreamingText
+            client:visible
+            question={tuasistente.question[lang]}
+            answer={tuasistente.answer[lang]}
+            sources={tuasistente.sources}
+            followUps={tuasistente.followUps[lang]}
+            labels={tuasistente.labels[lang]}
+          />
+        </Panel>
+
+        <!-- 03 Clara -->
+        <Panel {...panel('clara')}>
+          <Thinking client:visible rows={clara.rows[lang]} active={clara.active[lang]} done={clara.done[lang]} />
+        </Panel>
+
+        <!-- 04 Experience -->
+        <Panel {...panel('experiencia')}>
+          <div class="flex w-full max-w-[36rem] flex-col gap-6">
+            <TaskRows client:visible rows={jobRows} runningLabel={lang === 'es' ? 'actual' : 'current'} />
+            <ul class="flex flex-col gap-1.5 px-1">
+              {education.map((e) => (
+                <li class="flex items-baseline gap-3 text-[12.5px]">
+                  <span class="w-[86px] shrink-0 font-mono text-[11.5px] text-ink-3 tabular-nums">{e.period}</span>
+                  <span class="text-ink">{e.title[lang]}</span>
+                  <span class="truncate text-ink-3">{e.org}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </Panel>
+
+        <!-- 05 Talks & awards -->
+        <Panel {...panel('charlas')} frame={false}>
+          <div class="grid grid-cols-1 gap-4 lg:grid-cols-2">
+            {[
+              { head: lang === 'es' ? 'Charlas' : 'Talks', rows: talks.map((tk) => ({ a: tk.year, b: tk.topic[lang], c: tk.title, href: tk.link })) },
+              { head: lang === 'es' ? 'Premios y certificaciones' : 'Awards & certifications', rows: awards.map((a) => ({ a: a.date, b: a.title[lang], c: a.org, href: undefined })) },
+            ].map((table) => (
+              <div class="overflow-hidden rounded-card bg-surface shadow-card">
+                <div class="border-b border-line bg-inset px-3 py-2 text-[12px] font-medium text-ink-2">{table.head}</div>
+                <ul>
+                  {table.rows.map((r) => (
+                    <li class="grid grid-cols-[56px_minmax(0,1fr)] gap-3 border-b border-line px-3 py-2.5 last:border-0">
+                      <span class="pt-px font-mono text-[11.5px] text-ink-3 tabular-nums">{r.a}</span>
+                      <span class="flex flex-col">
+                        {r.href ? (
+                          <a href={r.href} target="_blank" rel="noopener noreferrer" class="text-[13px] text-ink underline-grow">{r.b} ↗</a>
+                        ) : (
+                          <span class="text-[13px] text-ink">{r.b}</span>
+                        )}
+                        <span class="text-[12px] text-ink-3">{r.c}</span>
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </Panel>
+
+        <!-- 06 Projects -->
+        <Panel {...panel('proyectos')} frame={false}>
+          <div class="grid grid-cols-1 gap-3 sm:grid-cols-2 xl:grid-cols-3">
+            {projects.map((p) => {
+              const Tag = p.link ? 'a' : 'div';
+              return (
+                <Tag
+                  {...(p.link ? { href: p.link, target: '_blank', rel: 'noopener noreferrer' } : {})}
+                  class="group flex flex-col gap-1.5 rounded-card bg-surface p-3.5 shadow-card transition-shadow duration-150 hover:shadow-raised"
+                >
+                  <span class="flex items-center justify-between text-[13px] font-medium text-ink">
+                    {p.name}
+                    {p.link && <span class="text-ink-3 transition-colors group-hover:text-ink" aria-hidden="true">↗</span>}
+                  </span>
+                  <span class="text-[12.5px] leading-normal text-ink-2">{p.description[lang]}</span>
+                  <span class="mt-auto pt-1 font-mono text-[11px] text-ink-3">{p.tags}</span>
+                </Tag>
+              );
+            })}
+          </div>
+        </Panel>
+
+        <!-- 07 Writing -->
+        <Panel {...panel('escritos')} frame={false}>
+          <div class="overflow-hidden rounded-card bg-surface shadow-card">
+            <ul>
+              {recentPosts.map((post) => (
+                <li class="border-b border-line last:border-0">
+                  <a href={post.url} class="grid grid-cols-[92px_minmax(0,1fr)] gap-3 px-3 py-2.5 transition-colors duration-100 hover:bg-inset">
+                    <span class="whitespace-nowrap pt-px font-mono text-[11.5px] text-ink-3 tabular-nums">{dateFmt(post.frontmatter.pubDate)}</span>
+                    <span class="truncate text-[13px] text-ink">{post.frontmatter.title}</span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+            <a href="/posts/" class="flex items-center justify-between border-t border-line bg-inset px-3 py-2 text-[12px] text-ink-2 transition-colors hover:text-ink">
+              {t.viewAll} <span aria-hidden="true">→</span>
+            </a>
+          </div>
+        </Panel>
+
+        <!-- 08 Contact -->
+        <Panel {...panel('contacto')}>
+          <div class="flex w-full max-w-[44rem] flex-col items-center gap-8 md:flex-row md:items-start md:justify-center">
+            <ApprovalCard
+              client:visible
+              question={contact[lang].question}
+              options={contact[lang].options}
+              labels={contact[lang].labels}
+            />
+            <div class="w-full max-w-[20rem]">
+              <p class="mb-2 text-[12px] text-ink-3">{contact[lang].forAgents}</p>
+              <div class="overflow-hidden rounded-card bg-surface font-mono text-[11.5px] leading-[1.9] shadow-card">
+                {['/llms.txt', markdownPath[lang]].map((path, i) => (
+                  <a href={path} class="flex gap-3 px-3 transition-colors duration-100 first:pt-1.5 last:pb-1.5 hover:bg-inset">
+                    <span class="w-3 select-none text-right text-ink-3">{i + 1}</span>
+                    <span><span class="text-ink-3">curl</span> <span class="text-ink">alejofig.com{path}</span></span>
+                  </a>
+                ))}
+              </div>
+            </div>
+          </div>
+        </Panel>
+
+        <footer class="flex flex-wrap items-center justify-between gap-2 px-5 py-6 text-[12px] text-ink-3 md:px-8">
+          <span>© {new Date().getFullYear()} Alejandro Figueroa</span>
+          <span>
+            UI: <a href="https://www.beautifului.dev/" target="_blank" rel="noopener noreferrer" class="underline-grow hover:text-ink">Beautiful UI</a> (MIT)
+          </span>
+        </footer>
+      </div>
+    </div>
+  </div>
+</Base>

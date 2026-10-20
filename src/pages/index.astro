@@ -1,28 +1,5 @@
 ---
-import type { IFrontmatter } from 'astro-boilerplate-components';
-
-import BentoGrid from '@/components/BentoGrid.astro';
-import Base from '@/templates/Base.astro';
-import { AppConfig } from '@/utils/AppConfig';
-import { sortByDate } from '@/utils/Posts';
-
-const allPosts = await Astro.glob<IFrontmatter>('./posts/*.md');
-const sortedPosts = sortByDate(allPosts);
-const lastThreePosts = sortedPosts.slice(0, 3);
-
-const recentPosts = lastThreePosts.map((post) => ({
-  title: post.frontmatter.title,
-  description: post.frontmatter.description,
-  pubDate: post.frontmatter.pubDate,
-  imgSrc: post.frontmatter.imgSrc,
-  imgAlt: post.frontmatter.imgAlt,
-  url: post.url!,
-}));
-
-const { title } = AppConfig;
-const { description } = AppConfig;
+import Home from '@/templates/Home.astro';
 ---
 
-<Base head={{ title, description }}>
-  <BentoGrid recentPosts={recentPosts} />
-</Base>
+<Home lang="es" />
