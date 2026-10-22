@@ -16,7 +16,7 @@ On their website, you can see events, DJs, and dates. I developed a script that 
 
 Note: You need an OpenAI API Key for this to work.
 
-Once the dataset was created, I built a simple Streamlit app where you can select a year and see which DJ played the most during that period. You can check it out here: https://berghain.alejofig.com/
+Once the dataset was created, I built a simple Streamlit app where you can select a year and see which DJ played the most during that period. The hosted app is no longer online, but the code is on GitHub: https://github.com/alejofig/berghain-analysis
 
 Conclusion
 In this project, AI not only helped speed up the process of answering specific questions, but also made repetitive tasks — like parsing information — much more user-friendly. (Although it did cost me about 1 USD for the OpenAI API usage!)

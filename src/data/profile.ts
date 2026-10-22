@@ -647,6 +647,7 @@ export const talks: { year: string; title: string; topic: T; link?: string }[] =
         es: 'QA autónomo con AgentCore, Strands y Browser Tool',
         en: 'Autonomous QA with AgentCore, Strands and Browser Tool',
       },
+      link: 'https://github.com/alejofig/qa-strands-agentcore',
     },
     {
       year: '2025',
@@ -703,7 +704,6 @@ export const projects: {
   },
   {
     name: 'FitAgent',
-    link: 'https://github.com/alejofig',
     tags: 'Flutter · Bedrock · Garmin',
     description: {
       es: 'Coach de entrenamiento que ajusta el plan con los datos de Garmin.',
@@ -720,21 +720,21 @@ export const projects: {
     },
   },
   {
-    name: 'LOL Wrapped',
-    link: 'https://lolwrapped.com',
-    tags: 'Python · AWS',
+    name: 'LoL Wrapped MCP',
+    link: 'https://github.com/alejofig/lol-wrapper-agent',
+    tags: 'Python · FastMCP · Riot API',
     description: {
-      es: 'Tu año en League of Legends, en estadísticas.',
-      en: 'Your League of Legends year, in stats.',
+      es: 'Servidor MCP que arma tu "Wrapped" del año en League of Legends con la API de Riot.',
+      en: 'An MCP server that builds your League of Legends year "Wrapped" from the Riot API.',
     },
   },
   {
     name: 'Berghain Analysis',
-    link: 'https://berghain.alejofig.com',
-    tags: 'Scraping · LLM · Charts',
+    link: 'https://github.com/alejofig/berghain-analysis',
+    tags: 'Scraping · OpenAI · Streamlit',
     description: {
-      es: 'Datos del club de Berlín: scraping, extracción con IA y gráficas.',
-      en: "Data on Berlin's club: scraping, AI extraction and charts.",
+      es: 'Datos del club de Berlín: dataset armado con scraping e IA, explorado en Streamlit.',
+      en: "Data on Berlin's club: a dataset built with scraping and AI, explored in Streamlit.",
     },
   },
 ];
